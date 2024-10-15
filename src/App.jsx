@@ -17,9 +17,7 @@ function App() {
   useEffect(()=>{
     fetch("http://localhost:4000/discos")
     .then(respuesta => respuesta.json())
-    .then(discos=>{
-      setDiscos(discos)
-    })
+    .then(discos=>setDiscos(discos))
   },[]);
 
   function agregarDisco(disco){
@@ -32,7 +30,7 @@ function App() {
   })
     .then((respuesta) => respuesta.json())
     .then(({ id }) => {
-      setDiscos([...discos, { id, nombre: disco }]);
+      setDiscos([...discos, { id, nombre: disco, favorito: false }]);
     })
     .catch(error => console.error("Error al agregar disco:", error))
 }
@@ -54,7 +52,21 @@ function App() {
 
   function editarDisco(id, nuevoNombre) {
     setDiscos(discos.map(disco => disco.id == id ? { id, nombre: nuevoNombre } : disco));
-  }
+  };
+
+  function actualizarEstado(id,nuevoEstadoFavorito){
+  setDiscos(discos.map(disco =>{
+    if(disco.id === id){
+      return{ ...disco,favorito : nuevoEstadoFavorito};
+      
+    }
+    return disco;
+  }))
+}
+
+  
+
+  
 
     
 
@@ -75,13 +87,19 @@ function App() {
     <Formulario agregarDisco={agregarDisco}/>
    
     <ul className="list-group mt-3">
-      {discos.length > 0 ? (discos.map(({id,nombre}) => <Discos key={id}
+      {discos.length > 0 ? (discos.map(({id,nombre,favorito}) => <Discos 
+                                                        key={id}
                                                         id={id} 
-                                                         disco={nombre}
+                                                        disco={nombre}
+                                                        favorito={favorito}
+                                                        
+                                                       
                                                          borrarDisco={ borrarDisco}
-                                                         editarDisco={editarDisco}/>
+                                                         editarDisco={editarDisco}
+                                                         actualizarEstado={actualizarEstado}
+                                                         />
                                                          )):
-                                                         (<li className='list-group-item'>No hay discos para mostar</li>)}
+                                                         (<li className='list-group-item'>No hay discos para mostrar</li>)}
     </ul>
     </div>
      
