@@ -56,3 +56,15 @@ h1 {
 .boton-ver-favoritos {
     margin-top: 30px;
 }
+
+.rotar{
+    animation: girar 5s linear infinite;
+}
+@keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

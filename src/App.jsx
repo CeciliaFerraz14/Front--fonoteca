@@ -79,9 +79,9 @@ function App() {
     <div className="page-container ">
     
       <div className="caja text-center p-3 d-flex justify-content-center align-items-center flex-nowrap">
-          <img src={icono} alt="Imagen Izquierda" className="img-fluid me-5 d-none d-md-block " /> 
+          <img src={icono} alt="Imagen Izquierda" className="img-fluid me-5 d-none d-md-block rotar " /> 
           <h1> LA FONOTECA </h1>
-          <img src={icono} alt="Imagen Derecha" className="img-fluid ms-5 d-none d-md-block " />
+          <img src={icono} alt="Imagen Derecha" className="img-fluid ms-5 d-none d-md-block rotar" />
 
           </div>
 
