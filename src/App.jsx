@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react'
 import viteLogo from '/vite.svg'
-import 'bootstrap/dist/css/bootstrap.min.css'; // Para importar los estilos de Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './estilos.css';
 import icono from './archivos/icono.png';
 
 
 
-import Discos from './Discos'; //Importo la función Discos
+import Discos from './Discos'; 
 import Formulario from './Formulario';
 
 
 
 function App() {
   let[discos,setDiscos] = useState([]);
+  let[verFavoritos, setVerFavoritos] = useState(false);
 
   useEffect(()=>{
     fetch("http://localhost:4000/discos")
@@ -68,7 +69,7 @@ function App() {
 
   
 
-    
+    const filtroFavorito = verFavoritos ? discos.filter(disco => disco.favorito): discos;
 
 
  
@@ -84,28 +85,37 @@ function App() {
 
           </div>
 
+      
+
     <Formulario agregarDisco={agregarDisco}/>
-   
+
     <ul className="list-group mt-3">
-      {discos.length > 0 ? (discos.map(({id,nombre,favorito}) => <Discos 
-                                                        key={id}
-                                                        id={id} 
-                                                        disco={nombre}
-                                                        favorito={favorito}
-                                                        
-                                                       
-                                                         borrarDisco={ borrarDisco}
-                                                         editarDisco={editarDisco}
-                                                         actualizarEstado={actualizarEstado}
-                                                         />
-                                                         )):
-                                                         (<li className='list-group-item'>No hay discos para mostrar</li>)}
-    </ul>
-    </div>
-     
+      {filtroFavorito.length > 0 ? (
+            filtroFavorito.map(({ id, nombre, favorito }) => (
+              <Discos
+                key={id}
+                id={id}
+                disco={nombre}
+                favorito={favorito}
+                borrarDisco={borrarDisco}
+                editarDisco={editarDisco}
+                actualizarEstado={actualizarEstado}
+              />
+            ))
+          ) : (
+            <li className='list-group-item'>No hay discos para mostrar</li>
+          )}
+        </ul>
+      </div>
+      
+      <div className='boton-ver-favoritos text-center' title={verFavoritos? "Ver Todos" : "Ver Favoritos"} >
+        <button className="btn btn-success" onClick={()=> setVerFavoritos (!verFavoritos) }
+        > {verFavoritos ? "Ver Todos" : "Ver Favoritos"} </button>
+      </div>
+
     </>
   );
-  }
+}
   
 
 

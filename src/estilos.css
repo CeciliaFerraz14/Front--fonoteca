@@ -53,3 +53,6 @@ h1 {
     max-height: 300px;
     overflow: auto;
 }
+.boton-ver-favoritos {
+    margin-top: 30px;
+}
