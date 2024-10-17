@@ -15,7 +15,7 @@ body{
 }
 
 .page-container {
-    max-width: 650px;
+    max-width: 950px;
 
 }
 
@@ -50,7 +50,7 @@ h1 {
 }
 
 .list-group {
-    max-height: 300px;
+    max-height: 500px;
     overflow: auto;
 }
 .boton-ver-favoritos {

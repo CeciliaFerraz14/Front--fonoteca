@@ -7,34 +7,66 @@ import { useEffect } from "react"
 
 
 
-function Discos({id,disco,favorito,editarDisco,borrarDisco,actualizarEstado}){
+function Discos({id,disco,artista,genero,favorito,editarDisco,borrarDisco,actualizarEstado}){
     let [editando,setEditando] = useState(false)
     let [textoTemporal,setTextoTemporal] = useState(disco)
+    let [textoTemporalArtista, setTextoTemporalArtista] = useState(artista)
+    let [textoTemporalGenero, setTextoTemporalGenero] = useState(genero)
+
    
 
     
 
     return (<div className="list-group-item d-flex justify-content-between align-items-center">
     {!editando ? (
-        <h3 className="mb-0">{disco}</h3>
-    ) : (
+        <div>
+           <h3 className="mb-0">{disco}</h3>
+           <p><strong>Artista:</strong> {artista}</p>
+           <p><strong>Género:</strong> {genero}</p>
+        </div>
+           ) : (
+        <div className="w-100">
         <input
             type="text"
-            className="form-control me-3"
+            className="form-control me-3 mb-2"
             value={textoTemporal}
+            placeholder="Nombre del Disco"
             onChange={(evento) => setTextoTemporal(evento.target.value)}
         />
-    )}
+   
+        <input
+            type="text"
+            className="form-control me-3 mb-2"
+            value={textoTemporalArtista}
+            placeholder="Nombre del Artista"
+            onChange={(evento) => setTextoTemporalArtista(evento.target.value)}
+        />
+        <input
+            type="text"
+            className="form-control me-3 mb-2"
+            value={textoTemporalGenero}
+            placeholder="Género musical"
+            onChange={(evento) => setTextoTemporalGenero(evento.target.value)}
+        />
+        </div>
+         )}
 
           <div className="ms-auto btn-group" >
                 <button  className=" btn btn-success me-3" title={editando ? "Guardar" : "Editar"} 
                   onClick={ () => {
                         if(editando){
-                                if(textoTemporal.trim() != "" && 
-                                textoTemporal.trim() != disco){
+                                if(textoTemporal.trim() != "" &&
+                                   textoTemporalArtista.trim() != "" && 
+                                   textoTemporalGenero.trim() != "" &&  
+
+                                   textoTemporal.trim() != disco || textoTemporalArtista.trim() != artista || textoTemporalGenero.trim() != genero ){
                                         return fetch(`http://localhost:4000/discos/editar/${id}`, {
                                                 method : "PUT",
-                                                body : JSON.stringify({ disco : textoTemporal.trim() }),
+                                                body : JSON.stringify({ 
+                                                        disco : textoTemporal.trim(),
+                                                        artista : textoTemporalArtista.trim(),
+                                                        genero : textoTemporalGenero.trim()
+                                                 }),
                                                 headers : {
                                                         "Content-type" : "application/json"
                                                 }
@@ -42,8 +74,11 @@ function Discos({id,disco,favorito,editarDisco,borrarDisco,actualizarEstado}){
                                         .then(respuesta => respuesta.json())
                                         .then(({error,resultado}) => {
                                                 if(!error && resultado == "ok"){
-                                                        editarDisco(id,textoTemporal.trim())
-                                                        setTextoTemporal(textoTemporal.trim())
+                                                        editarDisco(id,textoTemporal.trim(),textoTemporalArtista.trim(),textoTemporalGenero.trim())
+                                                        setTextoTemporal(textoTemporal.trim());
+                                                        setTextoTemporalArtista(textoTemporalArtista.trim());
+                                                        setTextoTemporalGenero(textoTemporalGenero.trim());
+
                                                         setEditando(false)
                                                      
                                                 }else{
@@ -53,6 +88,8 @@ function Discos({id,disco,favorito,editarDisco,borrarDisco,actualizarEstado}){
                                         });
                                 }else{
                                 setTextoTemporal(disco)
+                                setTextoTemporalArtista(artista)
+                                setTextoTemporalGenero(genero)
                                 setEditando(false)
                                
                                 }

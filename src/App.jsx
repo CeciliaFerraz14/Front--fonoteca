@@ -21,17 +21,17 @@ function App() {
     .then(discos=>setDiscos(discos))
   },[]);
 
-  function agregarDisco(disco){
+  function agregarDisco(disco,artista,genero){
     fetch("http://localhost:4000/discos/nueva", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({disco}),
+    body: JSON.stringify({disco,artista,genero}),
   })
     .then((respuesta) => respuesta.json())
     .then(({ id }) => {
-      setDiscos([...discos, { id, nombre: disco, favorito: false }]);
+      setDiscos([...discos, { id, nombre: disco,artista,genero, favorito: false }]);
     })
     .catch(error => console.error("Error al agregar disco:", error))
 }
@@ -51,8 +51,8 @@ function App() {
     }) .catch((error) => console.error("Error al borrar disco:", error));
   };
 
-  function editarDisco(id, nuevoNombre) {
-    setDiscos(discos.map(disco => disco.id == id ? { id, nombre: nuevoNombre } : disco));
+  function editarDisco(id, nuevoNombre, nuevoArista, nuevoGenero) {
+    setDiscos(discos.map(disco => disco.id == id ? {...disco, nombre: nuevoNombre, artista:nuevoArista, genero:nuevoGenero}: disco));
   };
 
   function actualizarEstado(id,nuevoEstadoFavorito){
@@ -91,11 +91,13 @@ function App() {
 
     <ul className="list-group mt-3">
       {filtroFavorito.length > 0 ? (
-            filtroFavorito.map(({ id, nombre, favorito }) => (
+            filtroFavorito.map(({ id, nombre,artista,genero, favorito }) => (
               <Discos
                 key={id}
                 id={id}
                 disco={nombre}
+                artista={artista}
+                genero ={genero}
                 favorito={favorito}
                 borrarDisco={borrarDisco}
                 editarDisco={editarDisco}
