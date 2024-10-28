@@ -1,70 +1,66 @@
-html, body {
-    height: 100%;
-    width: 100%;
-    margin:0;
-    padding: 0;
+html,body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
-body{
-    /* padding: 400px;
-    padding-top: 100px; */
-    background-image: url("./archivos/fondo.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* height: 100vh; */
+body {
+ 
+  background-image: url("./archivos/fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
 }
 
 .page-container {
-    max-width: 950px;
-
+  max-width: 950px;
 }
 
-.caja{
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
+.caja {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 }
 
 h1 {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bold;
-    font-size: 70px;
-    color: green;
-
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 60px;
+  color: green;
 }
 
-.img-fluid{
-    width: 100px;
-    height: auto;
-  
-
+.img-fluid {
+  width: 100px;
+  height: auto;
 }
 
-.boton-editar{
-    margin-left: 890px;
+.boton-editar {
+  margin-left: 890px;
 }
-.boton-guardar{
-    margin-left: 800px;
+.boton-guardar {
+  margin-left: 800px;
 }
 
 .list-group {
-    max-height: 500px;
-    overflow: auto;
+  max-height: 500px;
+  overflow: auto;
 }
 .boton-ver-favoritos {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
-.rotar{
-    animation: girar 5s linear infinite;
+.rotar {
+  animation: girar 5s linear infinite;
 }
 @keyframes girar {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
