@@ -11,13 +11,13 @@ function App() {
   let [verFavoritos, setVerFavoritos] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:4000/discos")
+    fetch("https://back-fonoteca.onrender.com/discos")
       .then((respuesta) => respuesta.json())
       .then((discos) => setDiscos(discos));
   }, []);
 
   function agregarDisco(disco, artista, genero) {
-    fetch("http://localhost:4000/discos/nueva", {
+    fetch("https://back-fonoteca.onrender.com/discos/nueva", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function App() {
 
 
   function borrarDisco(id) {
-    fetch(`http://localhost:4000/discos/borrar/${id}`, {
+    fetch(`https://back-fonoteca.onrender.com/discos/borrar/${id}`, {
       method: "DELETE",
     })
       .then((respuesta) => respuesta.json())
@@ -49,7 +49,7 @@ function App() {
   }
 
   function editarDisco(id, nuevoNombre, nuevoArtista, nuevoGenero) {
-    fetch(`http://localhost:4000/discos/editar/${id}`, {
+    fetch(`https://back-fonoteca.onrender.com/discos/editar/${id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",

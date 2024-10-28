@@ -78,7 +78,7 @@ function Discos({
                 textoTemporalArtista.trim() != artista ||
                 textoTemporalGenero.trim() != genero
               ) {
-                return fetch(`http://localhost:4000/discos/editar/${id}`, {
+                return fetch(`https://back-fonoteca.onrender.com/discos/editar/${id}`, {
                   method: "PUT",
                   body: JSON.stringify({
                     disco: textoTemporal.trim(),
@@ -133,7 +133,7 @@ function Discos({
         title={favorito ? "Quitar de Favoritos" : "Añadir a Favoritos"}
         onClick={() => {
           const nuevoEstadoFavorito = !favorito;
-          fetch(`http://localhost:4000/discos/actualizar/estado/${id}`, {
+          fetch(`https://back-fonoteca.onrender.com/discos/actualizar/estado/${id}`, {
             method: "PUT",
             body: JSON.stringify({ favorito: nuevoEstadoFavorito }), 
             headers: {
