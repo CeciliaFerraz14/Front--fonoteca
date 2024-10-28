@@ -5,7 +5,7 @@ function Formulario({ agregarDisco }) {
   let [botonEditar, setBotonEditar] = useState("Agregar Disco");
   let [artista, setArtista] = useState("");
   let [genero, setGenero] = useState("");
-  let [otroGenero, setOtroGenero] = useState("");
+ 
 
   return (
     <form
@@ -23,19 +23,17 @@ function Formulario({ agregarDisco }) {
           alert("Tiene que indicar el artista");
           return;
         }
-        const generoFinal = genero == "Otro" ? otroGenero : genero;
 
-        if (generoFinal.trim() === "") {
+        if (genero.trim() === "") {
           alert("Tiene que indicar de qué género musical es el disco");
           return;
         }
 
 
-        agregarDisco(nombre, artista, generoFinal);
+        agregarDisco(nombre, artista, genero);
         setNombre("");
         setArtista("");
         setGenero("");
-        setOtroGenero("");
 
        
       }}
@@ -80,15 +78,7 @@ function Formulario({ agregarDisco }) {
         <option value="Ska" />
       </datalist>
 
-      {genero == "Otro" && (
-        <input
-          type="text"
-          className="form-control"
-          value={otroGenero}
-          placeholder="Escriba su género"
-          onChange={(evento) => setOtroGenero(evento.target.value)}
-        />
-      )}
+      
       <button type="submit" className="btn btn-success">
         {" "}
         Agregar Disco{" "}
