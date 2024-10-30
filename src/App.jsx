@@ -10,7 +10,7 @@ import Formulario from "./Formulario";
 function App() { //defino los estados
   let [discos, setDiscos] = useState([]);
   let [verFavoritos, setVerFavoritos] = useState(false);
-  let[cargando,setCargando] = useState (true)
+  let [cargando,setCargando] = useState (true)
 
   useEffect(() => {   //conecto con la base de datos
     setCargando(true)
