@@ -10,11 +10,14 @@ import Formulario from "./Formulario";
 function App() { //defino los estados
   let [discos, setDiscos] = useState([]);
   let [verFavoritos, setVerFavoritos] = useState(false);
+  let[cargando,setCargando] = useState (true)
 
   useEffect(() => {   //conecto con la base de datos
+    setCargando(true)
     fetch("https://back-fonoteca.onrender.com/discos")  //petición al endpoint de discos
       .then((respuesta) => respuesta.json())
       .then((discos) => setDiscos(discos));
+      setCargando(false);
     
    }, []);
     
