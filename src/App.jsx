@@ -16,8 +16,9 @@ function App() { //defino los estados
     setCargando(true)
     fetch("https://back-fonoteca.onrender.com/discos")  //petición al endpoint de discos
       .then((respuesta) => respuesta.json())
-      .then((discos) => setDiscos(discos));
-      setCargando(false);
+      .then((discos) => {
+        setDiscos(discos);
+        setCargando(false)})
     
    }, []);
     
