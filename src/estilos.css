@@ -1,9 +1,11 @@
+/*configuración general*/
 html,body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
 }
+/*estilos para el fondo de la página*/
 body {
  
   background-image: url("./archivos/fondo.jpg");
@@ -12,11 +14,11 @@ body {
   background-repeat: no-repeat;
   
 }
-
+/*contenedor principal*/
 .page-container {
   max-width: 950px;
 }
-
+/*Caja donde va el contenido de h1*/
 .caja {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.8);
@@ -24,7 +26,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;
 }
-
+/*Título principal de la página*/
 h1 {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -32,30 +34,33 @@ h1 {
   font-size: 60px;
   color: green;
 }
-
+/*estilo de los iconos laterales*/
 .img-fluid {
   width: 100px;
   height: auto;
 }
-
+/*espaciado especifico para el botón de editar*/
 .boton-editar {
   margin-left: 890px;
 }
+/*espaciado especifico para el botón de guardar*/
 .boton-guardar {
   margin-left: 800px;
 }
-
+/*configuración de la lista de elementos*/
 .list-group {
   max-height: 500px;
   overflow: auto;
 }
+/*botón de favoritos con margen superior personalizado*/
 .boton-ver-favoritos {
   margin-top: 30px;
 }
-
+/*efc¡ecto de rotar de los iconos laterales*/
 .rotar {
   animation: girar 5s linear infinite;
 }
+/*definición de la animación de rotación*/
 @keyframes girar {
   from {
     transform: rotate(0deg);

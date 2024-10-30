@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react"; //importo hook de react
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //importo los iconos de fontawesome.com  que uso para algunos  botones
 import {
   faTrash,
   faPenToSquare,
@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 
-function Discos({
+function Discos({ //defino el componente DISCOS con las props necesarias
   id,
   disco,
   artista,
@@ -18,13 +18,14 @@ function Discos({
   editarDisco,
   borrarDisco,
   actualizarEstado,
-}) {
+}) { 
+  //defino los estados para manejar la edición, y los textos temporales
   let [editando, setEditando] = useState(false);
   let [textoTemporal, setTextoTemporal] = useState(disco);
   let [textoTemporalArtista, setTextoTemporalArtista] = useState(artista);
   let [textoTemporalGenero, setTextoTemporalGenero] = useState(genero);
 
-  return (
+  return ( //retorno de la estructura donde se va a editar, guardar,borrar y añadir a favoritos
     <div className="list-group-item d-flex justify-content-between align-items-center">
       {!editando ? (
         <div>
@@ -171,5 +172,5 @@ function Discos({
   );
 }
 
-
+//exporto el componente Discos
 export default Discos;

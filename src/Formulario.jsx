@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState } from "react"; //importo hook de react
 
-function Formulario({ agregarDisco }) {
+function Formulario({ agregarDisco }) { //componente de formulario para agregar disco
+  //declaración de estados para guardar el nombre del dico,artista y el género
   let [nombre, setNombre] = useState("");
-  let [botonEditar, setBotonEditar] = useState("Agregar Disco");
+  let [botonEditar, setBotonEditar] = useState("Agregar Disco"); //texto del botón
   let [artista, setArtista] = useState("");
   let [genero, setGenero] = useState("");
  
@@ -30,7 +31,8 @@ function Formulario({ agregarDisco }) {
         }
 
 
-        agregarDisco(nombre, artista, genero);
+        agregarDisco(nombre, artista, genero);/*llama a la función con los valores ingresados*/
+       /*restablece los valores de los campos*/
         setNombre("");
         setArtista("");
         setGenero("");
@@ -38,6 +40,8 @@ function Formulario({ agregarDisco }) {
        
       }}
     >
+      
+       {/* Campo de entrada para el nombre del disco */}
       <input
         type="text"
         className="form-control"
@@ -45,6 +49,7 @@ function Formulario({ agregarDisco }) {
         placeholder="Escriba aquí un nuevo disco"
         onChange={(evento) => setNombre(evento.target.value)}
       />
+       {/* Campo de entrada para el nombre del artista */}
       <input
         type="text"
         className="form-control"
@@ -52,7 +57,7 @@ function Formulario({ agregarDisco }) {
         placeholder="Artista"
         onChange={(evento) => setArtista(evento.target.value)}
       />
-
+       {/* Campo de entrada para el género musical */}
       <input
         list="generos"
         className="form-control"
@@ -60,6 +65,7 @@ function Formulario({ agregarDisco }) {
         onChange={(evento) => setGenero(evento.target.value)}
         placeholder="Selecciona o escribe un género musical"
       />
+       {/* lista de sugerencias para el usuario */}
       <datalist id="generos">
         <option value="Blues" />
         <option value="Clásica" />
@@ -78,7 +84,7 @@ function Formulario({ agregarDisco }) {
         <option value="Ska" />
       </datalist>
 
-      
+       {/* Botón para enviar todo el formulario */}
       <button type="submit" className="btn btn-success">
         {" "}
         Agregar Disco{" "}

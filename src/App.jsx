@@ -1,26 +1,29 @@
-import { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./estilos.css";
-import icono from "./archivos/icono.png";
-
-import Discos from "./Discos";
+import { useState, useEffect } from "react"; //importo hooks de react para amnejar estados
+import "bootstrap/dist/css/bootstrap.min.css"; //importo estilos de Bootstrap
+import "./estilos.css"; // importo la hoja de estilos personalizada
+import icono from "./archivos/icono.png"; //importo la imagen 
+//importo los componentes Discos y Formulario
+import Discos from "./Discos"; 
 import Formulario from "./Formulario";
 
-function App() {
+//Componente principal
+function App() { //defino los estados
   let [discos, setDiscos] = useState([]);
   let [verFavoritos, setVerFavoritos] = useState(false);
 
-  useEffect(() => {
-    fetch("https://back-fonoteca.onrender.com/discos")
+  useEffect(() => {   //conecto con la base de datos
+    fetch("https://back-fonoteca.onrender.com/discos")  //petición al endpoint de discos
       .then((respuesta) => respuesta.json())
       .then((discos) => setDiscos(discos));
-  }, []);
+    
+   }, []);
+    
 
-  function agregarDisco(disco, artista, genero) {
+  function agregarDisco(disco, artista, genero) {  //función para agregar un nuevo disco con una petición POST
     fetch("https://back-fonoteca.onrender.com/discos/nueva", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", //envía los datos en JSON
       },
       body: JSON.stringify({ disco, artista, genero }),
     })
@@ -30,12 +33,15 @@ function App() {
           ...discos,
           { id, nombre: disco, artista, genero, favorito: false },
         ]);
+        
       })
       .catch((error) => console.error("Error al agregar disco:", error));
+      
   }
+ 
 
 
-  function borrarDisco(id) {
+  function borrarDisco(id) { //función para eliminar un disco por su ID con una solicitud DELETE
     fetch(`https://back-fonoteca.onrender.com/discos/borrar/${id}`, {
       method: "DELETE",
     })
@@ -48,7 +54,7 @@ function App() {
       .catch((error) => console.error("Error al borrar disco:", error));
   }
 
-  function editarDisco(id, nuevoNombre, nuevoArtista, nuevoGenero) {
+  function editarDisco(id, nuevoNombre, nuevoArtista, nuevoGenero) {   //función para editar un disco, con una solicitud PUT
     fetch(`https://back-fonoteca.onrender.com/discos/editar/${id}`, {
       method: "PUT",
       headers: {
@@ -81,7 +87,7 @@ function App() {
 
   }
 
-  function actualizarEstado(id, nuevoEstadoFavorito) {
+  function actualizarEstado(id, nuevoEstadoFavorito) { //función para actualizar el estado de favorito
     setDiscos(
       discos.map((disco) => {
         if (disco.id === id) {
@@ -92,10 +98,11 @@ function App() {
     );
   }
 
-  const filtroFavorito = verFavoritos
+  const filtroFavorito = verFavoritos   // filtro los discos segín el estado de "favorito"
     ? discos.filter((disco) => disco.favorito)
     : discos;
 
+    //retorna el componente con la interfaz
   return (
     <>
       <div className="page-container col-12 col-md-8">
@@ -156,4 +163,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; //exporto el componente App como el componente principal
