@@ -169,6 +169,7 @@ function App() { //defino los estados
           {verFavoritos ? "Ver Todos" : "Ver Favoritos"}{" "}
         </button>
       </div>
+      </div>
     </>
   );
 }
