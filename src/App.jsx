@@ -122,7 +122,12 @@ function App() { //defino los estados
             className="img-fluid ms-5 d-none d-md-block rotar"
           />
         </div>
-
+        { cargando ? ( 
+        <div className="loading container text-center">
+          <p>Cargando,¡no te marches!</p>
+        </div>
+        ) : ( 
+      <> 
         <Formulario agregarDisco={agregarDisco} />
 
         <div className="row mt-3 ">
@@ -148,8 +153,10 @@ function App() { //defino los estados
             )}
           </ul>
         </div>
-      </div>
-
+     </>
+      
+      )}
+        
       <div
         className="boton-ver-favoritos text-center"
         title={verFavoritos ? "Ver Todos" : "Ver Favoritos"}
