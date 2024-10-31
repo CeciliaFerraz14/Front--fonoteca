@@ -125,7 +125,7 @@ function App() { //defino los estados
         </div>
         { cargando ? ( 
         <div className="caja-mensaje text-center p-3 d-flex justify-content-center align-items-center flex-nowrap loading container text-center">
-          <p>Cargando,¡no te marches!</p>
+          <p><strong>Cargando...¡No te marches!</strong></p>
         </div>
         ) : ( 
       <> 
