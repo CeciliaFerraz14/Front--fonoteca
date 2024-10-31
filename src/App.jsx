@@ -124,7 +124,7 @@ function App() { //defino los estados
           />
         </div>
         { cargando ? ( 
-        <div className="loading container text-center">
+        <div className="caja-mensaje text-center p-3 d-flex justify-content-center align-items-center flex-nowrap loading container text-center">
           <p>Cargando,¡no te marches!</p>
         </div>
         ) : ( 
@@ -154,25 +154,23 @@ function App() { //defino los estados
             )}
           </ul>
         </div>
-     </>
-      
-      )}
         
-      <div
-        className="boton-ver-favoritos text-center"
-        title={verFavoritos ? "Ver Todos" : "Ver Favoritos"}
-      >
-        <button
-          className="btn btn-success"
-          onClick={() => setVerFavoritos(!verFavoritos)}
-        >
-          {" "}
-          {verFavoritos ? "Ver Todos" : "Ver Favoritos"}{" "}
-        </button>
-      </div>
+        <div
+              className="boton-ver-favoritos text-center"
+              title={verFavoritos ? "Ver Todos" : "Ver Favoritos"}
+            >
+              <button
+                className="btn btn-success"
+                onClick={() => setVerFavoritos(!verFavoritos)}
+              >
+                {verFavoritos ? "Ver Todos" : "Ver Favoritos"}
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
 }
 
-export default App; //exporto el componente App como el componente principal
+export default App; // Exporto el componente App como el componente principal
